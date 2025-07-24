@@ -5,9 +5,28 @@ import CourseCard from '../components/CourseCard'
 import FilterPanel from '../components/FilterPanel.jsx'
 import SearchBar from '../components/SearchBar'
 
+// Define Course interface
+interface Course {
+  id: number;
+  title: string;
+  description: string;
+  instructor: string;
+  duration: number;
+  level: string;
+  category: string;
+  source: string;
+  url: string;
+  thumbnail: string;
+  rating: number;
+  students: number;
+  tags: string[];
+  lessons: number;
+  lastUpdated: string;
+}
+
 const Courses = () => {
   const { courses, loading, searchCourses, filterCourses } = useContext(CourseContext)
-  const [filteredCourses, setFilteredCourses] = useState([])
+  const [filteredCourses, setFilteredCourses] = useState<Course[]>([])
   const [searchTerm, setSearchTerm] = useState('')
   const [filters, setFilters] = useState({
     category: '',
